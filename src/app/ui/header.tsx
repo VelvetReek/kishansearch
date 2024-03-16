@@ -17,7 +17,7 @@ export default function Header() {
                 height={70}
               />
               <p className="mt-5 text-2xl font-bold text-gray-600">
-                Sri Singal Word Center
+                Shri Single Bud Center
               </p>
             </Link>
           </div>
