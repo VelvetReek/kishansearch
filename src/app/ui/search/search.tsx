@@ -1,11 +1,9 @@
 "use client";
 
-import { log } from "console";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import Image from "next/image";
 import { useState } from "react";
-import { set } from "mongoose";
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
