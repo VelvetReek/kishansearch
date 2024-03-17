@@ -21,3 +21,18 @@ export async function fetchFilteredKishanData(
     throw new Error("Failed to fetch kishan data");
   }
 }
+
+export async function fetchKishanDataPages(query: string) {
+  try {
+    const count = await sql`SELECT COUNT(*)
+    FROM kishan_data
+    WHERE
+      kishan_data.card_no ILIKE ${`%${query}%`}`;
+
+    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+    return totalPages;
+  } catch (err) {
+    console.error("Database Error: ", err);
+    throw new Error("Failed to fetch total number of Data");
+  }
+}

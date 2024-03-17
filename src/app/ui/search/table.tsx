@@ -8,9 +8,8 @@ export default async function Table({
   currentPage: number;
 }) {
   const kishanData = await fetchFilteredKishanData(query, currentPage);
-
   return (
-    <div className="bg-opacity-30 bg-white rounded-xl">
+    <div className="rounded-xl">
       <div className="flex flex-col font-semibold text-base">
         <div className="-m-1.5 overflow-x-auto">
           <div className="p-1.5 min-w-full inline-block align-middle">

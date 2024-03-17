@@ -4,7 +4,7 @@ import "@/app/ui/globals.css";
 import Header from "@/app/ui/header";
 
 export const metadata: Metadata = {
-  title: "Sri Singal Word Center",
+  title: "Shri single bud center",
   description: "It is a search engine for kishan of Hasanpur Sugar Mill",
 };
 

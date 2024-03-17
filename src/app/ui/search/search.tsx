@@ -1,8 +1,7 @@
 "use client";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import { useDebouncedCallback } from "use-debounce";
-import Image from "next/image";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 
 export default function Search({ placeholder }: { placeholder: string }) {
@@ -12,7 +11,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
   const [inputValue, setInputValue] = useState("");
 
-  const handleSearch = useDebouncedCallback((term: string) => {
+  const handleSearch = (term: string) => {
     console.log("searching for:", term);
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
@@ -22,7 +21,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
       params.delete("query");
     }
     replace(`${pathname}?${params.toString()}`);
-  }, 300);
+  };
 
   return (
     <>
@@ -38,21 +37,15 @@ export default function Search({ placeholder }: { placeholder: string }) {
           }}
           defaultValue={searchParams.get("query")?.toString()}
         />
-        <Image
-          src="/magnifying-glass-icon.gif"
-          alt="Search icon"
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"
-          width={22}
-          height={22}
-        />
+        <MagnifyingGlassIcon className="absolute w-6 h-6 text-gray-400 top-3 left-3" />
       </div>
       <div>
         <button
           type="button"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-32 h-12 mr-8"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md w-36 h-12 mr-8"
           onClick={() => handleSearch(inputValue)}
         >
-          search
+          Grower Code
         </button>
       </div>
     </>

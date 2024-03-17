@@ -1,7 +1,7 @@
 export default function Page() {
   return (
-    <main>
-      <h1 className="">Upload Page</h1>
-    </main>
+    <div className="w-full bg-slate-200 min-h-screen pt-4 pb-4">
+      Upload Page
+    </div>
   );
 }
