@@ -16,9 +16,9 @@ export default async function Page({
 
   if (query === "")
     return (
-      <div className="w-ful min-h-screen pt-4 pb-4 bg-[url('/search-bg.svg')] bg-no-repeat bg-cover bg-center bg-fixed">
-        <div className="backdrop-blur-sm ml-10 mr-10 rounded-xl bg-opacity-30 bg-white">
-          <div className="flex items-center justify-between gap-2 md:mt-8 bg-opacity-50 bg-white rounded-xl">
+      <div className="w-full min-h-screen pt-4 pb-4 bg-[url('/search-bg.svg')] bg-no-repeat bg-cover bg-center bg-fixed">
+        <div className="backdrop-blur ml-10 mr-10 rounded-xl bg-opacity-30 bg-white">
+          <div className="flex items-center justify-between gap-2 ">
             <Search placeholder="Search Enteries" />
           </div>
           <div className="flex justify-center items-center h-96">
@@ -34,7 +34,7 @@ export default async function Page({
   return (
     <div className="w-ful min-h-screen pt-4 pb-4 bg-[url('/search-bg.svg')] bg-no-repeat bg-cover bg-center bg-fixed">
       <div className="backdrop-blur-sm ml-10 mr-10 rounded-xl bg-opacity-30 bg-white">
-        <div className="flex items-center justify-between gap-2 md:mt-8 bg-opacity-50 bg-white rounded-xl">
+        <div className="flex items-center justify-between gap-">
           <Search placeholder="Search Enteries" />
         </div>
         <Table query={query} currentPage={currentPage} />

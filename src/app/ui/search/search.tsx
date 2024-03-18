@@ -45,7 +45,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md w-36 h-12 mr-8"
           onClick={() => handleSearch(inputValue)}
         >
-          Grower Code
+          Grower Query
         </button>
       </div>
     </>

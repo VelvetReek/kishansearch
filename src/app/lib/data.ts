@@ -1,17 +1,19 @@
 import { sql } from "@vercel/postgres";
-import { kishanDataTable, kishan_data } from "./definitions";
+import { kishanDataTable } from "./definitions";
+import { unstable_noStore as noStore } from "next/cache";
 
 const ITEMS_PER_PAGE = 10;
 export async function fetchFilteredKishanData(
   query: string,
   currentPage: number
 ) {
+  // noStore();
   try {
     const data = await sql<kishanDataTable>`
     SELECT * FROM kishan_data 
     WHERE
         kishan_data.card_no ILIKE ${`%${query}%`} 
-        ORDER BY kishan_data.date DESC
+        ORDER BY (kishan_data.date, kishan_data.card_no) DESC
         OFFSET ${(currentPage - 1) * ITEMS_PER_PAGE}
         LIMIT ${ITEMS_PER_PAGE}
     `;
@@ -23,6 +25,7 @@ export async function fetchFilteredKishanData(
 }
 
 export async function fetchKishanDataPages(query: string) {
+  // noStore();
   try {
     const count = await sql`SELECT COUNT(*)
     FROM kishan_data

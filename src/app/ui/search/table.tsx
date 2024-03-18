@@ -8,6 +8,13 @@ export default async function Table({
   currentPage: number;
 }) {
   const kishanData = await fetchFilteredKishanData(query, currentPage);
+  if (kishanData.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-96">
+        <h1 className="text-4xl font-bold text-gray-700">No Data Found</h1>
+      </div>
+    );
+  }
   return (
     <div className="rounded-xl">
       <div className="flex flex-col font-semibold text-base">
@@ -65,7 +72,7 @@ export default async function Table({
                     >
                       Quantity
                     </th>
-                    <th
+                    {/* <th
                       scope="col"
                       className="px-6 py-3 text-end text-base font-bold text-slate-700 uppercase"
                     >
@@ -76,15 +83,12 @@ export default async function Table({
                       className="px-6 py-3 text-end text-base font-bold text-slate-700 uppercase"
                     >
                       Price
-                    </th>
+                    </th> */}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                   {kishanData?.map((data) => (
-                    <tr
-                      className="hover:bg-gray-100"
-                      key={data.date + data.card_no}
-                    >
+                    <tr className="hover:bg-gray-100" key={data.id}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-950">
                         {data.date}
                       </td>
@@ -109,12 +113,12 @@ export default async function Table({
                       <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium text-gray-950">
                         {data.quantity}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium text-gray-950">
+                      {/* <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium text-gray-950">
                         {data.rate}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium text-gray-950">
                         {data.price}
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
