@@ -1,9 +1,10 @@
 "use client";
 
-import { excelToJSON } from "@/app/lib/utils";
+import { excelToJSON, isValidData } from "@/lib/utils";
 import { useState } from "react";
 import Image from "next/image";
 import LoadingAnim from "./loading";
+import { addKishanData } from "@/lib/actions";
 
 export default function Upload() {
   const [file, setFile] = useState(null);
@@ -22,18 +23,25 @@ export default function Upload() {
       setLoading(true);
       excelToJSON(file)
         .then((jsonData) => {
+          const intialLength = jsonData.length;
           const plainObject = JSON.parse(JSON.stringify(jsonData));
-          // addKishanData(plainObject)
-          //   .then(() => {
-          setLoading(false);
-          setFile(null);
-          setFileName("");
-          alert("Data uploaded successfully");
-          //   })
-          //   .catch(() => {
-          //     setLoading(false);
-          //     alert("Failed to upload data");
-          //   });
+          const validData = plainObject.filter(isValidData); // Filter out invalid data
+          const finalLength = validData.length;
+          addKishanData(validData)
+            .then(() => {
+              setLoading(false);
+              setFile(null);
+              setFileName("");
+              alert(
+                `Uploaded ${finalLength} out of ${intialLength} records successfully. ${
+                  intialLength - finalLength
+                } records were invalid and were not uploaded.`
+              );
+            })
+            .catch(() => {
+              setLoading(false);
+              alert("Error: 501 | Failed to upload data");
+            });
         })
         .catch(() => {
           setLoading(false);
@@ -55,8 +63,8 @@ export default function Upload() {
               <Image
                 src={file === null ? "/upload-icon.svg" : "/excel-icon.svg"}
                 alt="upload"
-                width={100}
                 height={100}
+                width={100}
               />
               <div>{fileName}</div>
               <input

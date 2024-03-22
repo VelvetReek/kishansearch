@@ -1,4 +1,5 @@
 "use server";
+
 import { sql } from "@vercel/postgres";
 
 export async function addKishanData(kishan_data: any) {
@@ -11,7 +12,6 @@ export async function addKishanData(kishan_data: any) {
                   ON CONFLICT (id) DO NOTHING`
       )
     );
-    console.log(`Seeded ${insertData.length} rows`);
     return insertData;
   } catch (error) {
     console.error("Database Error:", error);

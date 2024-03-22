@@ -11,3 +11,10 @@ export type kishanDataTable = {
   // rate: number;
   // price: number;
 };
+
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+};

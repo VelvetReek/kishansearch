@@ -1,5 +1,5 @@
 const { db } = require("@vercel/postgres");
-const kishan_data = require("../src/app/lib/placeholder-data");
+// const kishan_data = require("../src/app/lib/placeholder-data");
 
 async function seed(client) {
   try {
@@ -19,9 +19,6 @@ async function seed(client) {
         )
     `;
     console.log("Created table kishan_data");
-    // const addConstraint = await client.sql`
-    //     ALTER TABLE kishan_data ADD CONSTRAINT unique_card_date UNIQUE(date, card_no);`;
-    // console.log("Constraint added successfully");
 
     // const insertData = await Promise.all(
     //   kishan_data.map(

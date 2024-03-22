@@ -45,15 +45,27 @@ export function excelToJSON(file: any): Promise<any> {
         const jsonData = XLSX.utils.sheet_to_json(
           workbook.Sheets[workbook.SheetNames[0]]
         );
-
-        // Add a delay before logging the data
-        setTimeout(() => {
-          console.log(jsonData);
-          resolve(jsonData); // Resolve the promise with the jsonData
-        }, 5000); // 2000ms = 2 seconds
+        resolve(jsonData);
       }
     };
     reader.onerror = (error) => reject(error); // Reject the promise if there's an error
     reader.readAsBinaryString(file);
   });
+}
+
+// Define the required fields
+const requiredFields = [
+  "date",
+  "card_no",
+  "circle",
+  "village",
+  "name",
+  "through",
+  "variety",
+  "quantity",
+];
+
+// Validation function
+export function isValidData(data: any) {
+  return requiredFields.every((field) => field in data);
 }

@@ -1,10 +1,26 @@
+import LoginForm from "@/components/login/loginForm";
+import Image from "next/image";
+
 export default function Page() {
+  const image_style: React.CSSProperties = {
+    width: "50%",
+    height: "75vh",
+    position: "relative",
+  };
   return (
-    <main className="bg-no-repeat bg-cover bg-center bg-[url('/hero_main.jpg')] h-screen">
-      <div className="backdrop-blur-sm top-1/4 left-1/4 w-1/2 h-1/2 fixed rounded-2xl">
-        <h1 className="text-4xl font-bold text-white text-center ">
-          This is a login page
-        </h1>
+    <main className="bg-slate-200">
+      <div className="flex w-screen justify-between items-center">
+        <div className="w-1/2">
+          <LoginForm />
+        </div>
+        <div style={image_style} className="border-slate-400">
+          <Image
+            className="border-l-4 border-black"
+            src="/login_img.jpg"
+            alt="Login-themed image"
+            fill
+          />
+        </div>
       </div>
     </main>
   );

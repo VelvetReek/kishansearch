@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { nunito } from "@/app/ui/fonts";
-import "@/app/ui/globals.css";
-import Header from "@/app/ui/header";
+import { nunito } from "@/components/ui/fonts";
+import "@/components/ui/globals.css";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import clsx from "clsx";
 
 export const metadata: Metadata = {
   title: "Shri single bud center",
@@ -15,11 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={nunito.className}>
-        <div className="">
-          <Header />
-          <main>{children}</main>
-        </div>
+      <body
+        className={clsx(`${nunito.className} min-h-screen overflow-x-hidden`)}
+      >
+        <Header />
+        <main className="">{children}</main>
+        <Footer />
       </body>
     </html>
   );

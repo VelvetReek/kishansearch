@@ -1,4 +1,4 @@
-import Upload from "../ui/upload/upload";
+import Upload from "@/components/upload/upload";
 
 export default function Page() {
   return (

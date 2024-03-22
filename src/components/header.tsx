@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <div className="bg-[url('/header-bg.svg')] w-full bg-center bg-no-repeat bg-cover shadow-[0 20px 50px rgba(8, 112, 184, 0.7)] flex mx-auto items-center justify-between h-28">
+    <header className="bg-[url('/header-bg.svg')] w-full bg-center bg-no-repeat bg-cover flex mx-auto items-center justify-between h-28">
       <div className="flex items-center">
         <Link href={"/"} className="flex gap-5 ml-10">
           <Image
@@ -42,6 +42,6 @@ export default function Header() {
           </Link>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

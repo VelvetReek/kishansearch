@@ -7,7 +7,7 @@ export async function fetchFilteredKishanData(
   query: string,
   currentPage: number
 ) {
-  // noStore();
+  noStore();
   try {
     const data = await sql<kishanDataTable>`
     SELECT * FROM kishan_data 
@@ -25,7 +25,7 @@ export async function fetchFilteredKishanData(
 }
 
 export async function fetchKishanDataPages(query: string) {
-  // noStore();
+  noStore();
   try {
     const count = await sql`SELECT COUNT(*)
     FROM kishan_data
