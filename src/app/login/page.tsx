@@ -1,7 +1,14 @@
 import LoginForm from "@/components/login/loginForm";
 import Image from "next/image";
+import { auth } from "~/src/auth";
+import { redirect } from "next/navigation";
 
-export default function Page() {
+export default async function Page() {
+  const session = await auth();
+  if (session) {
+    redirect("/");
+    return null;
+  }
   const image_style: React.CSSProperties = {
     width: "50%",
     height: "75vh",

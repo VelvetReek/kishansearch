@@ -1,9 +1,15 @@
 "use client";
 
+import {
+  ArrowRightIcon,
+  ExclamationCircleIcon,
+} from "@heroicons/react/24/outline";
+import { useFormState, useFormStatus } from "react-dom";
+import { authenticate } from "~/src/lib/actions";
+import { Button } from "../ui/button";
+
 export default function LoginForm() {
-  function handleLogin(formData: any) {
-    console.log(formData);
-  }
+  const [errorMessage, dispatch] = useFormState(authenticate, undefined);
   return (
     <div className="relative mx-auto w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
       <div className="w-full">
@@ -14,7 +20,7 @@ export default function LoginForm() {
           </p>
         </div>
         <div className="mt-5">
-          <form action={handleLogin}>
+          <form action={dispatch}>
             <div className="relative mt-6">
               <input
                 type="email"
@@ -40,12 +46,7 @@ export default function LoginForm() {
               </label>
             </div>
             <div className="my-6">
-              <button
-                type="submit"
-                className="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"
-              >
-                Sign in
-              </button>
+              <LoginButton />
             </div>
             <p className="text-center text-sm text-gray-500">
               Don&#x27;t have an account? &nbsp;
@@ -55,11 +56,26 @@ export default function LoginForm() {
               >
                 Request access
               </a>
-              .
             </p>
+            {errorMessage && (
+              <>
+                <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+                <p className="text-sm text-red-500">{errorMessage}</p>
+              </>
+            )}
           </form>
         </div>
       </div>
     </div>
+  );
+}
+
+function LoginButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button aria-disabled={pending}>
+      Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+    </Button>
   );
 }

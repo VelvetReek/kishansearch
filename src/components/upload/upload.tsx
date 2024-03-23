@@ -3,7 +3,7 @@
 import { excelToJSON, isValidData } from "@/lib/utils";
 import { useState } from "react";
 import Image from "next/image";
-import LoadingAnim from "./loading";
+import LoadingAnim from "../ui/loading";
 import { addKishanData } from "@/lib/actions";
 
 export default function Upload() {
@@ -58,8 +58,11 @@ export default function Upload() {
           className="pt-10 flex flex-col justify-center items-center"
           style={{ position: "relative" }}
         >
-          <div>
-            <label htmlFor="file-input" className="hover:cursor-pointer">
+          <div className="pb-5">
+            <label
+              htmlFor="file-input"
+              className="hover:cursor-pointer hover:brightness-150"
+            >
               <Image
                 src={file === null ? "/upload-icon.svg" : "/excel-icon.svg"}
                 alt="upload"
@@ -75,6 +78,9 @@ export default function Upload() {
                 hidden
               />
             </label>
+          </div>
+          <div className="mb-5">
+            <p className=" text-lg">Click on the icon to choose a file</p>
           </div>
           {loading && <LoadingAnim />}
         </div>

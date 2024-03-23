@@ -1,7 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import { auth, signOut } from "../auth";
+import { getSession } from "next-auth/react";
 
-export default function Header() {
+export default async function Header() {
+  const session = await auth();
   return (
     <header className="bg-[url('/header-bg.svg')] w-full bg-center bg-no-repeat bg-cover flex mx-auto items-center justify-between h-28">
       <div className="flex items-center">
@@ -34,12 +37,25 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex items-center mb-2">
-          <Link
-            href={"/login"}
-            className="bg-transparent shadow-md hover:bg-red-500 text-red-500 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded mr-5 ml-5"
-          >
-            Logout
-          </Link>
+          {session ? (
+            <form
+              action={async () => {
+                "use server";
+                await signOut();
+              }}
+            >
+              <button className="bg-transparent shadow-md hover:bg-red-500 text-red-500 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded mr-5 ml-5">
+                Logout
+              </button>
+            </form>
+          ) : (
+            <Link
+              href={"/login"}
+              className="bg-transparent shadow-md hover:bg-green-200 text-grey ring-2 focus:outline-none ring-green-300 rounded mr-5 ml-5 py-2 px-4"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </header>
