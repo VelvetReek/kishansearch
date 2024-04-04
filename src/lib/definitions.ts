@@ -8,8 +8,6 @@ export type kishanDataTable = {
   through: string;
   variety: string;
   quantity: number;
-  // rate: number;
-  // price: number;
 };
 
 export type User = {
@@ -17,4 +15,15 @@ export type User = {
   name: string;
   email: string;
   password: string;
+};
+
+export const headingFormat = {
+  date: "Date",
+  card_no: "Card No.",
+  circle: "Circle",
+  village: "Village",
+  name: "Name",
+  through: "Through",
+  variety: "Variety",
+  quantity: "Quantity",
 };

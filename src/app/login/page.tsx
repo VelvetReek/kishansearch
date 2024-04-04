@@ -11,16 +11,18 @@ export default async function Page() {
   }
   const image_style: React.CSSProperties = {
     width: "50%",
-    height: "75vh",
     position: "relative",
   };
   return (
-    <main className="bg-slate-200">
+    <main className="bg-slate-200 max-md:bg-[url('/login_img.jpg')] max-md:bg-no-repeat max-md:bg-cover max-md:bg-center max-md:bg-fixed max-md:min-h-[75vh]">
       <div className="flex w-screen justify-between items-center">
-        <div className="w-1/2">
+        <div className="md:w-1/2 w-screen max-md:mt-10 max-md:ml-1 max-md:mr-1">
           <LoginForm />
         </div>
-        <div style={image_style} className="border-slate-400">
+        <div
+          style={image_style}
+          className="max-[768px]:hidden border-slate-400 min-h-[75vh]"
+        >
           <Image
             className="border-l-4 border-black"
             src="/login_img.jpg"
