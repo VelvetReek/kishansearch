@@ -53,7 +53,7 @@ export default function Upload() {
   };
   return (
     <div className="flex justify-center items-center pt-6">
-      <div className="backdrop-blur-md ml-10 mr-10 rounded-xl bg-opacity-30 bg-white min-w-[400px] h-96 flex flex-col justify-center items-center">
+      <div className="backdrop-blur-md ml-10 mr-10 rounded-xl bg-opacity-30 bg-white min-w-[350px] md:min-w-[450px] h-96 flex flex-col justify-center items-center">
         <div
           className="pt-10 flex flex-col justify-center items-center"
           style={{ position: "relative" }}

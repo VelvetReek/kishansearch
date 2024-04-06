@@ -11,10 +11,10 @@ Kishansearch is a web application built with the Next.js framework. It is deploy
 
 ## Live Demo
 
-A live demo of the application is available. Click on the [deployment link](#) to access the application. You will be redirected to the login page. Use the following test credentials:
+A live demo of the application is available. Click on the [deployment link](kishansearch-bay.vercel.app) to access the application. You will be redirected to the login page. Use the following test credentials:
 
-- User ID: `test-user`
-- Password: `test-password`
+- User ID: `testmail@56789.com`
+- Password: `01234567`
 
 The search function is working properly with more than 200 example sets of data in the database. Currently, visitors don't have permission to upload Excel files into database due to limited memory in demo version, but the upload function is working properly and logs data in the console of the device for testing.
 
