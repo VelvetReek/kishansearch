@@ -7,7 +7,7 @@ import clsx from "clsx";
 
 export const metadata: Metadata = {
   title: "Shri single bud center",
-  description: "It is a search engine for kishan of Hasanpur Sugar Mill",
+  description: "upload and manage data for single bud center",
 };
 
 export default function RootLayout({
