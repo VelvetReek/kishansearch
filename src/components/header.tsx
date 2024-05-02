@@ -19,7 +19,7 @@ export default async function Header() {
               height={70}
             />
             <p className="mt-5 text-2xl font-bold text-gray-600">
-              Shri Single Bud Center
+              Kishan Search
             </p>
           </Link>
         </div>

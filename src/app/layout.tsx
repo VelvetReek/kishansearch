@@ -6,8 +6,8 @@ import Footer from "@/components/footer";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
-  title: "Shri single bud center",
-  description: "upload and manage data for single bud center",
+  title: "Kishan Search",
+  description: "upload and manage data of excel sheet",
 };
 
 export default function RootLayout({
